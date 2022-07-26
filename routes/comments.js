@@ -13,9 +13,10 @@ async function handle(req,res){
     //console.log(dataHandle[req.query.data])
     console.log(req.query.data)
     let r = await dataHandle[req.query.data](req)
-
+    // console.log(r)
     res.send(r)
 }
 router.get('/',handle)
+router.post('/',handle)
 
 module.exports = router

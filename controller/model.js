@@ -17,7 +17,7 @@ class sModel extends base{
 
     constructor(info,message) {
         super(info,message)
-        this.errStatus = true
+        this.status = true
 
     }
 }
@@ -25,7 +25,7 @@ class eModel extends base{
 
     constructor(info,message) {
         super(info,message)
-        this.errStatus = false
+        this.status = false
     }
 }
 

@@ -9,8 +9,8 @@ function userLogin(...user){
     //console.log('111')
     return new Promise((resolve, reject) => {
 
-        let sqlTxt = `select grade from users where id = '${user[0]}' and password = ${user[1]}`
-        //console.log(sqlTxt)
+        let sqlTxt = `select * from users where id = '${user[0]}' and password = ${user[1]}`
+        // console.log(sqlTxt)
         // let sqlTxt = 'select * from users where id = 001 and password = 123'
         sql.query(sqlTxt,(e,r)=>{
             if(e){
@@ -22,7 +22,8 @@ function userLogin(...user){
                    let token = jwt.sign({id: user[0]},'esri',{expiresIn: 5})
                     tokenSave(token,user[0])
                    // console.log(r[0].grade)
-                    resolve(new sModel({token,grade: r[0].grade},'验证成功'))
+                    delete r[0].password
+                    resolve(new sModel({token,...r[0]},'验证成功'))
                 }
                 reject(new eModel('登录信息错误'))
             }

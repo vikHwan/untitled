@@ -6,4 +6,4 @@ let sql = mysql.createPool({
     password:'Wq465433',
     database:'test'
 });
-module.exports = sql
+module.exports = sql;

@@ -68,11 +68,11 @@ dataHandle['postEdit'] = async function (req){
 }
 //发送评论
 dataHandle['sendReport'] = async function (req){
-    let {postID,userID,txt} = req.body;
+    let {id,userID,txt} = req.body;
     let commentID = nanoID(10);
     let time = new Date();
     return new Promise((resolve, reject) => {
-        let str = `insert into comments (postID,commentID,userID,txt,time) values ('${postID}', '${commentID}', '${userID}', '${txt}','${time.toISOString()}')`;
+        let str = `insert into comments (postID,commentID,userID,txt,time) values ('${id}', '${commentID}', '${userID}', '${txt}','${time.toISOString()}')`;
         dataSql(str).then(()=>{
             resolve(new sModel({},'已发送'));
         });

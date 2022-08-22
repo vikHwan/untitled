@@ -12,6 +12,8 @@ function getWeatherTips(ad) {
             if (!error) {
                 let html = res.body || "";
                 let $ =cheerio.load(html);
+                if(ad === "aba-(ngawa)-tibetan-and-qiang-autonomous-prefecture")
+                    ad ="aba"
                 city[ad] = {};
                 city[ad].temp = $('.wea_weather em').text().trim()+'℃';
                 city[ad].desc = $('.wea_weather b').text().trim();
